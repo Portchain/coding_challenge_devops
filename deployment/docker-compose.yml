@@ -1,0 +1,19 @@
+version: "3"
+
+services:
+  portchain:
+    image: "${PORTCHAIN_IMAGE}"
+    restart: always
+    environment:
+      - PORT=${PORTCHAIN_PORT}
+      - NODE_ENV="${PORTCHAIN_NODE_ENV}"
+
+  nginx:
+    image: "${PORTCHAIN_NGINX_IMAGE}"
+    restart: always
+    ports:
+      - 80:80
+      - 443:443
+    environment:
+      - PORTCHAIN_HOST=portchain
+      - PORTCHAIN_PORT=${PORTCHAIN_PORT}
