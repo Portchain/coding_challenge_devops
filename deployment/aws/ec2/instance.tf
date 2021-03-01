@@ -5,7 +5,6 @@ resource "aws_instance" "portchain_instance" {
   iam_instance_profile   = aws_iam_instance_profile.portchain_instance_profile.id
   vpc_security_group_ids = [ aws_security_group.allow_http_https.id ]
   associate_public_ip_address = true
-  key_name = "test"
   root_block_device {
     volume_type           = "gp2"
     volume_size           = "30"
